@@ -29,7 +29,7 @@
     if ([messageString length] == 0) {
         NSArray *sorted = [urls_ keysSortedByValueUsingComparator:
                            ^NSComparisonResult(id obj1, id obj2) {
-                               return [obj2 compare:obj1];
+                               return [obj2 intValue] < [obj1 intValue];
                            }];
         
         for (NSNumber *key in sorted) {
