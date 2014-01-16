@@ -13,12 +13,6 @@ overwritten.
 Someday I will probably update this with build instructions and how to install.
 For now you will need to learn how to setup plugins with Textual on your own.
 
-## Issues
-
-- Links like `imgur.com` will not work (no http(s)://)
-- Command output is printed with printDebugInformation
-- Sorting of `/links` output is wrong
-
 ## License
 
 The MIT License (MIT)
