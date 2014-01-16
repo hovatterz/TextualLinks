@@ -32,10 +32,12 @@
                                return [obj2 intValue] < [obj1 intValue];
                            }];
         
+        NSString *total = [NSString stringWithFormat:@"Links: %lu", urls_.count];
+        [self print:client message:total];
+
         for (NSNumber *key in sorted) {
-            // TODO: Make this not debug
             NSString *line = [NSString stringWithFormat:@"%d: %@", [key intValue], urls_[key]];
-            [client printDebugInformation:line];
+            [self print:client message:line];
         }
     } else {
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -74,6 +76,12 @@
     [self parseMessage:[[input string] stripIRCEffects]];
 
     return input;
+}
+
+- (void)print:(IRCClient *)client
+      message:(NSString *)message
+{
+    [client print:self.worldController.selectedChannel type:TVCLogLineDebugType nick:nil text: message encrypted:NO receivedAt:[NSDate date] command:TXLogLineDefaultRawCommandValue];
 }
 
 - (void)parseMessage:(NSString *)message
