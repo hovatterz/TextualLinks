@@ -27,13 +27,16 @@
                   command:(NSString *)commandString
 {
     if ([messageString length] == 0) {
-        NSArray *sorted = [urls_ keysSortedByValueUsingComparator:
-                           ^NSComparisonResult(id obj1, id obj2) {
-                               return [obj2 intValue] < [obj1 intValue];
-                           }];
-        
         NSString *total = [NSString stringWithFormat:@"Links: %lu", urls_.count];
         [self print:client message:total];
+
+        NSArray *sorted = [[urls_ allKeys] sortedArrayUsingComparator:
+                           ^NSComparisonResult(id obj1, id obj2) {
+                               int obj1Val = [obj1 intValue];
+                               int obj2Val = [obj2 intValue];
+                               if (obj1Val == obj2Val) return NSOrderedSame;
+                               return obj1Val < obj2Val ? NSOrderedAscending : NSOrderedDescending;
+                           }];
 
         for (NSNumber *key in sorted) {
             NSString *line = [NSString stringWithFormat:@"%d: %@", [key intValue], urls_[key]];
