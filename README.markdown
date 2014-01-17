@@ -2,8 +2,8 @@
 
 Plugin for Textual IRC client that allows you to open links without clicking them
 
-After links have been posted in a channel, just type `/links` to get a list
-of them. They will have ids next to them. Type `/links 0` to open the first
+After links have been posted in a channel, just type `/u` to get a list
+of them. They will have ids next to them. Type `/u 0` to open the first
 one and so on and so forth.
 
 The ids are incremented whenever a link is found up to the MAX_IDS (currently

@@ -19,7 +19,7 @@
 
 - (NSArray *)pluginSupportsUserInputCommands
 {
-    return @[@"links"];
+    return @[@"u"];
 }
 
 - (void)messageSentByUser:(IRCClient *)client
